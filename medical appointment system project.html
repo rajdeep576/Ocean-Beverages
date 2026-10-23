@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Appointment System</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Appointment System</h1>
+        <form id="appointmentForm">
+            <label for="name">Patient Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="date">Appointment Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Appointment Time:</label>
+            <input type="time" id="time" required>
+
+            <button type="submit">Schedule Appointment</button>
+        </form>
+
+        <h2>Scheduled Appointments</h2>
+        <ul id="appointmentList"></ul>
+    </div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        background-color: rgb(160, 221, 245);
+    }
+ 
+       
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-image: url("medical.jpg");
+        margin-top: 50px;
+    }
+    
+    
+    h1, h2 {
+        text-align: center;
+        font-family:50px ;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        margin: 10px 0 5px;
+    }
+    
+    input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #218838;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        background: #e9ecef;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+<script>
+document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const name = document.getElementById('name').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    // Validate input
+    if (!name || !date || !time) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Create appointment entry
+    const appointmentEntry = document.createElement('li');
+    appointmentEntry.textContent = `Appointment for ${name} on ${date} at ${time}`;
+    
+    // Add to appointment list
+    document.getElementById('appointmentList').appendChild(appointmentEntry);
+
+    // Clear form fields
+    document.getElementById('appointmentForm').reset();
+});
+
+</script>
+</body>
+</html>
